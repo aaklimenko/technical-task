@@ -1,0 +1,19 @@
+{
+  "name": "aaklimenko/test_task_amadeus",
+  "description": "test task amadeus",
+  "minimum-stability": "dev",
+  "license": "MIT",
+
+  "authors": [
+    {
+      "name": "Alex Klimenko",
+      "email": "alex.alex.klimenko@gmail.com"
+    }
+  ],
+
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  }
+}
