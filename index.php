@@ -1,76 +1,19 @@
 <?php
 
-class Animal
-{
-    public $name;
+/** @var \Composer\Autoload\ClassLoader $loader */
+$loader = require __DIR__.'/vendor/autoload.php';
 
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
+$human = new \Animal\Human\Human('Bill', new \Output\SMSCommunication());
 
-    public function walk()
-    {
-        if($this->name == 'dog' || $this->name == 'cat' || $this->name == 'rat')
-            echo $this->name . ' walking';
-    }
+$zooGolfCar = new \Zoo\ZooGolfCar($human);
 
-    public function meow()
-    {
-        echo $this->name . ' meow';
-    }
+$zebra = new \Animal\Zebra('Zebra');
+$zebra->addBehavior(new \Animal\AnimalBehavior\ZebraBehavior());
 
-    public function run()
-    {
-        echo $this->name . ' run';
-    }
+$wolf = new \Animal\Wolf('Wolf');
+$wolf->addBehavior(new \Animal\AnimalBehavior\WolfBehavior());
 
-    public function wuf()
-    {
-        echo $this->name . ' wuf';
-    }
+$zooGolfCar->addAnimalToRoute($wolf);
+$zooGolfCar->addAnimalToRoute($zebra);
 
-    public function byte($object)
-    {
-        echo $this->name . ' has bitten' . $object;
-    }
-
-    public function fly()
-    {
-        echo $this->name . ' fly';
-    }
-
-    public function pi()
-    {
-        echo $this->name . ' pi';
-    }
-}
-
-$animals = [
-    new Animal('cat'), new Animal('dog'), new Animal('sparrow'), new Animal('rat')
-];
-
-foreach($animals as $animal) {
-    switch($animal->name)
-    {
-        case 'cat':
-            $animal->walk();
-            $animal->meow();
-            break;
-        case 'dog':
-            $animal->walk();
-            $animal->run();
-            $animal->wuf();
-            $animal->byte('man');
-            break;
-        case 'sparrow':
-            $animal->walk();
-            $animal->tweet();
-            $animal->fly();
-            break;
-        case 'rat':
-            $animal->pi();
-            break;
-    }
-    $animal->eat('food');
-}
+$zooGolfCar->runTheRoute();
