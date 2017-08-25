@@ -1,4 +1,4 @@
-##Amadeus It Group PHP Developer Technical Task. Alex Klimenko
+#Amadeus It Group PHP Developer Technical Task. Alex Klimenko
 
 ## Overview
 
