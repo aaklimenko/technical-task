@@ -25,11 +25,20 @@ class ZooGolfCar implements ZooTransport
      */
     private $zooRoute = [];
 
+    /**
+     * Put visitor inside the car
+     * @param Human $human
+     */
     public function setVisitor(Human $human)
     {
         $this->human = $human;
     }
 
+    /**
+     * Add animal to car route
+     * @param Animal $animal
+     * @throws ZooRouteException
+     */
     public function addAnimalToRoute(Animal $animal)
     {
         if(in_array($animal, $this->zooRoute)){
@@ -39,6 +48,9 @@ class ZooGolfCar implements ZooTransport
         $this->zooRoute[] = $animal;
     }
 
+    /**
+     * Take visitor to all animals
+     */
     public function runTheRoute()
     {
         foreach ($this->zooRoute as $animal) {

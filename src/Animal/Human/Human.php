@@ -13,11 +13,11 @@ use Animal\Animal;
 
 class Human extends Animal
 {
-    protected function writeSMS(string $message)
-    {
-        $this->stream($message);
-    }
-
+    /**
+     * Human interaction scenario with each animal
+     * @param Animal $animal
+     * @return string
+     */
     public function startInteractionRoutine(Animal $animal) :string
     {
         $this->writeSMS("\nHi, its {$this->getName()}");
@@ -38,6 +38,19 @@ class Human extends Animal
         return $this->getFaceExpression();
     }
 
+    /**
+     * Output observed behavior
+     * @param string $message
+     */
+    protected function writeSMS(string $message)
+    {
+        $this->stream($message);
+    }
+
+    /**
+     * Observe animal behavior
+     * @param Animal $animal
+     */
     private function observeAnimal(Animal $animal)
     {
         foreach ($animal->liveItsLife() as $observation)
@@ -51,7 +64,9 @@ class Human extends Animal
         $this->writeSMS('I\'m feeling ' . $this->getFaceExpression());
     }
 
-
+    /**
+     * @param Animal $animal
+     */
     private function feedAnimal(Animal $animal)
     {
         $animal->takeFood();

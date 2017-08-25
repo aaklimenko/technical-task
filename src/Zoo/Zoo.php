@@ -32,6 +32,10 @@ class Zoo
      */
     private $zooTransport;
 
+    /**
+     * Zoo constructor.
+     * @param array $config
+     */
     public function __construct(array $config)
     {
         $this->initAnimals($config);
@@ -39,11 +43,18 @@ class Zoo
         $this->initZooTransport($config);
     }
 
+    /**
+     * Add visitor to zoo
+     * @param Human $human
+     */
     public function addVisitor(Human $human)
     {
         $this->visitors[] = $human;
     }
 
+    /**
+     * Take each visitor to each animal using zoo transport
+     */
     public function run()
     {
         foreach ($this->animals as $animal) {
@@ -56,6 +67,11 @@ class Zoo
         }
     }
 
+    /**
+     * Init zoo transport
+     * @param array $config
+     * @throws InvalidConfigException
+     */
     private function initZooTransport(array $config)
     {
         if(!isset($config['zooTransport']) || !isset($config['zooTransport']['class'])){
@@ -71,6 +87,11 @@ class Zoo
         $this->zooTransport = $zooTransport;
     }
 
+    /**
+     * Init all animals
+     * @param array $config
+     * @throws InvalidConfigException
+     */
     private function initAnimals(array $config)
     {
         if(!isset($config['animals'])) {

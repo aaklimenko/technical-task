@@ -11,20 +11,24 @@ namespace Animal;
 
 use Exception\BehaviorException;
 use Exception\NoOutputStreamException;
+use Interfaces\Actions\Bite;
 use Interfaces\Actions\Eat;
 use Interfaces\Behavior;
 use Interfaces\OutputStreamer;
 
-abstract class Animal implements Eat
+/**
+ * Class Animal
+ *
+ * All animals eat and bite
+ *
+ * Also they all have facial expressions that is affected by their mood
+ * @package Animal
+ */
+abstract class Animal implements Eat, Bite
 {
     const FACE_EXPRESSION_HAPPY = ':)';
     const FACE_EXPRESSION_NEUTRAL = ':|';
     const FACE_EXPRESSION_UNHAPPY= ':(';
-
-    /**
-     * @var OutputStreamer
-     */
-    private $outputStreamer;
 
     /**
      * @var Behavior[]
@@ -37,13 +41,34 @@ abstract class Animal implements Eat
     private $name = '';
 
     /**
+     * Some animals, humans for example, can output their experiences
+     * through some interface (sending sms, for instance)
+     * @var OutputStreamer
+     */
+    private $outputStreamer;
+
+    /**
+     * Happiness level can be affected by feeding them
      * @var int
      */
     private $happinessLevel = 0;
 
+    /**
+     * Cuteness level affects other animals, humans, for instance
+     * @var int
+     */
     protected $cutenessLevel = 0;
 
+    /**
+     * The damage done by bite
+     * @var int
+     */
     protected $bitePower = 0;
+
+    /**
+     * Animal aggression (less is more aggressive)
+     * @var int
+     */
     protected $biteChance = 0;
 
     /**
@@ -75,6 +100,11 @@ abstract class Animal implements Eat
         return $this->getName() . ' is behaving good';
     }
 
+    /**
+     * Bite
+     * @param Animal $animal
+     * @return string
+     */
     public function bite(Animal $animal) :string
     {
         $animal->getScared($this->bitePower);
@@ -83,6 +113,7 @@ abstract class Animal implements Eat
 
 
     /**
+     * Send messages using output stream
      * @param string $message
      * @throws NoOutputStreamException
      */
@@ -95,11 +126,17 @@ abstract class Animal implements Eat
         $this->outputStreamer->stream($message);
     }
 
+    /**
+     * @param int $amount
+     */
     protected function increaseHappinessLevel(int $amount = 1)
     {
         $this->happinessLevel += $amount;
     }
 
+    /**
+     * @param int $amount
+     */
     protected function decreaseHappinessLevel(int $amount = 1)
     {
         $this->happinessLevel -= $amount;
@@ -110,6 +147,9 @@ abstract class Animal implements Eat
         $this->increaseHappinessLevel();
     }
 
+    /**
+     * @param int $amount
+     */
     public function getScared(int $amount)
     {
         $this->decreaseHappinessLevel($amount);
@@ -137,6 +177,7 @@ abstract class Animal implements Eat
     }
 
     /**
+     * Face expression defined by the mood
      * @return string
      */
     public function getFaceExpression() :string
@@ -154,6 +195,10 @@ abstract class Animal implements Eat
         return Animal::FACE_EXPRESSION_UNHAPPY;
     }
 
+    /**
+     * @param Behavior $behavior
+     * @throws BehaviorException
+     */
     public function addBehavior(Behavior $behavior)
     {
         $behavior->setSubject($this);
@@ -165,6 +210,10 @@ abstract class Animal implements Eat
         $this->behaviors[] = $behavior;
     }
 
+    /**
+     * Run all behaviors
+     * @return iterable
+     */
     public function liveItsLife() :iterable {
 
         foreach ($this->behaviors as $behavior) {
@@ -174,6 +223,9 @@ abstract class Animal implements Eat
         }
     }
 
+    /**
+     * @return int
+     */
     public function getCutenessLevel()
     {
         return $this->cutenessLevel;

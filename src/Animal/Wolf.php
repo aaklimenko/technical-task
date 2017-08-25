@@ -8,12 +8,11 @@
 
 namespace Animal;
 
-
-use Interfaces\Actions\Bite;
 use Interfaces\Actions\Run;
 use Interfaces\Actions\Walk;
+use Interfaces\Actions\Wuf;
 
-class Wolf extends Animal implements Bite, Walk, Run
+class Wolf extends Animal implements Walk, Run, Wuf
 {
     protected $bitePower = 30;
 

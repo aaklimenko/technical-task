@@ -20,6 +20,9 @@ class ZebraBehavior implements Behavior
      */
     private $subject;
 
+    /**
+     * Zebra behavior
+     */
     public function run() :iterable {
         yield $this->subject->walk();
         yield $this->subject->run();

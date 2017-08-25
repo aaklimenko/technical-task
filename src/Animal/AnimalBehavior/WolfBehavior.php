@@ -20,6 +20,10 @@ class WolfBehavior implements Behavior
      */
     private $subject;
 
+    /**
+     * Wolf behavior
+     * @return iterable
+     */
     public function run() :iterable {
         yield $this->subject->walk();
         yield $this->subject->run();
