@@ -11,7 +11,7 @@ namespace Animal;
 
 class Wolf extends Animal
 {
-    protected $bitePower = 10;
+    protected $bitePower = 30;
 
     protected $cutenessLevel = 5;
 

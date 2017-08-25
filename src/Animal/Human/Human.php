@@ -20,7 +20,7 @@ class Human extends Animal
 
     public function startInteractionRoutine(Animal $animal) :string
     {
-        $this->writeSMS("\nHi its {$this->getName()}");
+        $this->writeSMS("\nHi, its {$this->getName()}");
         $this->writeSMS("I'm looking at {$animal->getName()}");
 
         $this->observeAnimal($animal);

@@ -19,7 +19,7 @@ class Zebra extends Animal implements bite, Run, Walk
 
     protected $biteChance = 10;
 
-    protected $cutenessLevel = 30;
+    protected $cutenessLevel = 20;
 
     public function run()
     {

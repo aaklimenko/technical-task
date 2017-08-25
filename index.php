@@ -3,17 +3,20 @@
 /** @var \Composer\Autoload\ClassLoader $loader */
 $loader = require __DIR__.'/vendor/autoload.php';
 
-$human = new \Animal\Human\Human('Bill', new \Output\SMSCommunication());
+$zooConfig = require __DIR__ . '/src/Config/zooConfig.php';
 
-$zooGolfCar = new \Zoo\ZooGolfCar($human);
+use Zoo\Zoo;
+use Animal\Human\Human;
+use Output\SMSCommunication;
 
-$zebra = new \Animal\Zebra('Zebra');
-$zebra->addBehavior(new \Animal\AnimalBehavior\ZebraBehavior());
+$communicationInterface = new SMSCommunication();
 
-$wolf = new \Animal\Wolf('Wolf');
-$wolf->addBehavior(new \Animal\AnimalBehavior\WolfBehavior());
+$zoo = new Zoo($zooConfig);
 
-$zooGolfCar->addAnimalToRoute($wolf);
-$zooGolfCar->addAnimalToRoute($zebra);
+$zoo->addVisitor(new Human('Bill', $communicationInterface));
+$zoo->addVisitor(new Human('Andrew', $communicationInterface));
+$zoo->addVisitor(new Human('Sarah', $communicationInterface));
+$zoo->addVisitor(new Human('Barbara', $communicationInterface));
+$zoo->addVisitor(new Human('Alex', $communicationInterface));
 
-$zooGolfCar->runTheRoute();
+$zoo->run();

@@ -11,8 +11,9 @@ namespace  Zoo;
 use Animal\Animal;
 use Animal\Human\Human;
 use Exception\ZooRouteException;
+use Interfaces\ZooTransport;
 
-class ZooGolfCar
+class ZooGolfCar implements ZooTransport
 {
     /**
      * @var Human
@@ -24,7 +25,7 @@ class ZooGolfCar
      */
     private $zooRoute = [];
 
-    public function __construct(Human $human)
+    public function setVisitor(Human $human)
     {
         $this->human = $human;
     }
