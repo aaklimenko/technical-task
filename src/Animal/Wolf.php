@@ -9,7 +9,11 @@
 namespace Animal;
 
 
-class Wolf extends Animal
+use Interfaces\Actions\Bite;
+use Interfaces\Actions\Run;
+use Interfaces\Actions\Walk;
+
+class Wolf extends Animal implements Bite, Walk, Run
 {
     protected $bitePower = 30;
 

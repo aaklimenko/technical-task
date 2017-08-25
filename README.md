@@ -18,3 +18,8 @@ animal can bite), some kind of a mediator (golf car), replaceable communication
 interface (SMS), etc.
 
 ## Instructions
+
+just run:
+
+docker-compose build
+docker-compose up

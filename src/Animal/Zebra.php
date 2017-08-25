@@ -9,11 +9,11 @@
 namespace Animal;
 
 
-use Interfaces\Actions\bite;
+use Interfaces\Actions\Bite;
 use Interfaces\Actions\Run;
 use Interfaces\Actions\Walk;
 
-class Zebra extends Animal implements bite, Run, Walk
+class Zebra extends Animal implements Bite, Run, Walk
 {
     protected $bitePower = 5;
 
