@@ -10,11 +10,16 @@ return [
    'animals' => [
        'Zebra' => [
            'class' => \Animal\Zebra::class,
-           'behaviours' => [\Animal\AnimalBehavior\ZebraBehavior::class]
+           'behaviours' => [
+               \Animal\AnimalBehavior\ZebraBehavior::class
+           ]
        ],
        'Wolf' => [
            'class' => \Animal\Wolf::class,
-           'behaviours' => [\Animal\AnimalBehavior\WolfBehavior::class]
+           'behaviours' => [
+               \Animal\AnimalBehavior\WolfBehavior::class,
+               \Animal\AnimalBehavior\WolfAngryBehavior::class,
+           ]
        ],
    ],
     'zooTransport' => [

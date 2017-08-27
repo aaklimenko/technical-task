@@ -13,7 +13,7 @@ use Animal\Animal;
 use Animal\Wolf;
 use Interfaces\Behavior;
 
-class WolfBehavior implements Behavior
+class WolfAngryBehavior implements Behavior
 {
     /**
      * @var Wolf
@@ -26,8 +26,8 @@ class WolfBehavior implements Behavior
      */
     public function run() :iterable
     {
-        yield $this->subject->walk();
-        yield $this->subject->run();
+        yield $this->subject->wuf();
+        yield $this->subject->wuf();
         yield $this->subject->wuf();
     }
 

@@ -25,3 +25,11 @@ just run:
 
 * `docker-compose build`
 * `docker-compose up`
+
+to test the code:
+
+* `docker run -v $(pwd):/app -t php:7.1 php /app/index.php`
+
+to run tests:
+
+* `docker run -v $(pwd):/app --rm phpunit/phpunit tests --bootstrap vendor/autoload.php`
