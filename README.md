@@ -32,3 +32,5 @@ to test the code:
 to run tests:
 
 * `docker run -v $(pwd):/app --rm phpunit/phpunit tests --bootstrap vendor/autoload.php`
+
+To test the events firing to go `http://127.0.0.1:8000/`
